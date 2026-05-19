@@ -164,35 +164,6 @@ def responder(pregunta):
 
 st.set_page_config(page_title="Cuadro de Mando Financiero", layout="wide")
 
-def check_password():
-    import time
-    SESSION_TIMEOUT = 8 * 3600  # 8 horas en segundos
-    now = time.time()
-    auth_time = st.session_state.get("auth_time", 0)
-    if st.session_state.get("authenticated") and (now - auth_time) < SESSION_TIMEOUT:
-        return
-    st.session_state.authenticated = False
-    st.markdown("""
-    <style>
-    .auth-box { max-width:380px; margin:80px auto 0 auto; padding:36px 32px;
-                background:#fff; border-radius:14px; box-shadow:0 4px 20px rgba(0,0,0,0.10); }
-    </style>
-    <div class="auth-box">
-      <div style="font-size:22px;font-weight:900;color:#0052FF;margin-bottom:6px;">🔒 Acceso Restringido</div>
-      <div style="font-size:13px;color:#888;margin-bottom:20px;">Ingresa la contraseña para continuar</div>
-    </div>
-    """, unsafe_allow_html=True)
-    pwd = st.text_input("Contraseña", type="password", placeholder="Contraseña", label_visibility="collapsed")
-    if st.button("Ingresar", use_container_width=True):
-        if pwd == st.secrets["password"]:
-            st.session_state.authenticated = True
-            st.session_state.auth_time = time.time()
-            st.rerun()
-        else:
-            st.error("Contraseña incorrecta")
-    st.stop()
-
-check_password()
 
 st.markdown("""
 <meta name="viewport" content="width=device-width, initial-scale=1">
