@@ -17,7 +17,7 @@ KNOWLEDGE = [
                 "Muestra: Total Equity ($8.1M PC), Total CAPEX ($16.5M PC), Total Revenue ($30.6M PC), "
                 "Net Profit ($13.4M PC), IRR (14.4%), NPV ($9.6M), Equity Multiple (3.76x) y ROI (64.97%).\n\n"
                 "Compara **Project Closing vs Business Plan**.\n\n"
-                "👉 [Abrir Central Link](https://closing-ydh6wy5habve4kbgqchkep.streamlit.app/)"
+                "👉 [Abrir Central Link](https://central-link-dashboard-gethyqnicf2zogfqjjqbrc.streamlit.app/)"
     },
     {
         "keys": ["estado de resultado","p&l","pl","presupuesto","ebitda","utilidad","ingresos","gastos operativos"],
@@ -164,60 +164,94 @@ def responder(pregunta):
 
 st.set_page_config(page_title="Cuadro de Mando Financiero", layout="wide")
 
+def check_password():
+    import time
+    SESSION_TIMEOUT = 8 * 3600  # 8 horas en segundos
+    now = time.time()
+    auth_time = st.session_state.get("auth_time", 0)
+    if st.session_state.get("authenticated") and (now - auth_time) < SESSION_TIMEOUT:
+        return
+    st.session_state.authenticated = False
+    st.markdown("""
+    <style>
+    .auth-box { max-width:380px; margin:80px auto 0 auto; padding:36px 32px;
+                background:#fff; border-radius:14px; box-shadow:0 4px 20px rgba(0,0,0,0.10); }
+    </style>
+    <div class="auth-box">
+      <div style="font-size:22px;font-weight:900;color:#0052FF;margin-bottom:6px;">🔒 Acceso Restringido</div>
+      <div style="font-size:13px;color:#888;margin-bottom:20px;">Ingresa la contraseña para continuar</div>
+    </div>
+    """, unsafe_allow_html=True)
+    pwd = st.text_input("Contraseña", type="password", placeholder="Contraseña", label_visibility="collapsed")
+    if st.button("Ingresar", use_container_width=True):
+        if pwd == st.secrets["password"]:
+            st.session_state.authenticated = True
+            st.session_state.auth_time = time.time()
+            st.rerun()
+        else:
+            st.error("Contraseña incorrecta")
+    st.stop()
+
+check_password()
+
 st.markdown("""
-<meta name="viewport" content="width=1200">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-html, body { min-width: 1200px; }
+section[data-testid="stSidebar"] { display: none; }
 .main .block-container {
-    min-width: 1100px;
     max-width: 1400px;
     padding-top: 2rem;
     box-sizing: border-box;
-    overflow-x: auto;
-}
-section[data-testid="stSidebar"] { display: none; }
-@media (max-width: 1200px) {
-    html, body { min-width: 1200px; overflow-x: auto; }
-    .main .block-container { min-width: 1100px; }
 }
 .app-card {
     background: #ffffff;
     border-radius: 14px;
-    padding: 36px 28px 28px 28px;
+    padding: 28px 20px 24px 20px;
     box-shadow: 0 4px 16px rgba(0,0,0,0.10);
     text-align: center;
     transition: transform 0.2s;
-    height: 340px;
+    height: 320px;
     position: relative;
     box-sizing: border-box;
 }
 .app-card > div { width: 100%; }
-.app-btn { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); white-space: nowrap; }
 .app-card:hover { transform: translateY(-4px); }
-.app-icon   { font-size: 48px; margin-bottom: 8px; }
-.app-title  { font-size: 20px; font-weight: 900; color: #0052FF; text-transform: uppercase; letter-spacing: 1px; margin: 8px 0; }
-.app-desc   { font-size: 14px; color: #666; line-height: 1.5; }
+.app-icon  { font-size: 44px; margin-bottom: 6px; }
+.app-title { font-size: 18px; font-weight: 900; color: #0052FF; text-transform: uppercase; letter-spacing: 1px; margin: 6px 0; }
+.app-desc  { font-size: 13px; color: #666; line-height: 1.5; }
 .app-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
     display: inline-block;
     background: #0052FF;
     color: white !important;
     font-weight: 700;
-    font-size: 15px;
-    padding: 12px 32px;
+    font-size: 14px;
+    padding: 10px 28px;
     border-radius: 8px;
     text-decoration: none;
-    margin-top: 16px;
     letter-spacing: 0.5px;
 }
 .app-btn:hover { background: #0041cc; }
+@media (max-width: 768px) {
+    .main .block-container { padding: 1rem 0.75rem; }
+    .app-card { height: auto; padding: 20px 16px 64px 16px; margin-bottom: 12px; }
+    .app-icon  { font-size: 36px; }
+    .app-title { font-size: 15px; }
+    .app-desc  { font-size: 12px; }
+    .app-btn   { font-size: 13px; padding: 9px 22px; }
+}
 </style>
 """, unsafe_allow_html=True)
 
 # ── ENCABEZADO ─────────────────────────────────────────────────────────────────
 st.markdown("""
-<div style="background:#0052FF;padding:36px 40px;border-radius:12px;margin-bottom:36px;text-align:center;">
-  <div style="color:white;font-size:40px;font-weight:900;letter-spacing:3px;">CUADRO DE MANDO FINANCIERO</div>
-  <div style="color:#D0E8FF;font-size:17px;font-weight:600;margin-top:8px;">Selecciona el dashboard que deseas consultar</div>
+<div style="background:#0052FF;padding:clamp(20px,4vw,36px) clamp(16px,5vw,40px);border-radius:12px;margin-bottom:28px;text-align:center;">
+  <div style="color:white;font-size:clamp(22px,5vw,40px);font-weight:900;letter-spacing:2px;">CUADRO DE MANDO FINANCIERO</div>
+  <div style="color:#D0E8FF;font-size:clamp(13px,2.5vw,17px);font-weight:600;margin-top:8px;">Selecciona el dashboard que deseas consultar</div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -244,7 +278,7 @@ with c2:
             <div class="app-title">Closing Project Assumptions</div>
             <div class="app-desc">Investment Summary Q4.<br>CAPEX, OPEX, Revenue y métricas de retorno: IRR, NPV, ROI, Equity Multiple.</div>
         </div>
-        <a class="app-btn" href="https://closing-ydh6wy5habve4kbgqchkep.streamlit.app/" target="_blank">Abrir →</a>
+        <a class="app-btn" href="https://central-link-dashboard-gethyqnicf2zogfqjjqbrc.streamlit.app/" target="_blank">Abrir →</a>
     </div>
     """, unsafe_allow_html=True)
 
