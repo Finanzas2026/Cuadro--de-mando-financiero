@@ -1,1 +1,1 @@
-# Cuadro--de-mando-financiero
+# Cuadro-de-mando-financiero
