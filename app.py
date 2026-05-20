@@ -237,7 +237,7 @@ with c1:
             <div class="app-title">Cash Flow Dashboard</div>
             <div class="app-desc">Monitoreo del flujo de efectivo mensual por período.<br>Ingresos, Gastos Operativos, Taxes y Cierre de Mes 2025–2028.</div>
         </div>
-        <a class="app-btn" href="https://cashflow-rnqmupyaqzpdva42uw6ywt.streamlit.app/" target="_blank">Abrir →</a>
+        <a class="app-btn" href="https://cdp-cashflow-dashboard-vku9srv6ged2perto6duet.streamlit.app/" target="_blank">Abrir →</a>
     </div>
     """, unsafe_allow_html=True)
 
@@ -261,7 +261,7 @@ with c3:
             <div class="app-title">Estado de Resultado</div>
             <div class="app-desc">P&L Presupuesto 2026–2028 vs Ejecutado 2025.<br>Ingresos, Gastos Operativos, EBITDA y Utilidad Neta.</div>
         </div>
-        <a class="app-btn" href="https://estado-de-resultado-j2xcmkofq7q7zwnqs9ycmu.streamlit.app/" target="_blank">Abrir →</a>
+        <a class="app-btn" href="https://estado-de-resultado-cfjy5j6mtcrqwrubn6jsb4.streamlit.app/" target="_blank">Abrir →</a>
     </div>
     """, unsafe_allow_html=True)
 
