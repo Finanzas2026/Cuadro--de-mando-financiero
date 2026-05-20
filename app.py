@@ -7,7 +7,7 @@ KNOWLEDGE = [
     {
         "keys": ["cash flow","flujo","efectivo","cashflow"],
         "resp": "📊 **Cash Flow Dashboard** monitorea el flujo de efectivo mensual de CD&P.\n\n"
-                "Incluye: Ingresos, Gastos Operativos (Admin, Capital Humano, Marketing, Operativos), "
+                "Incluye: Ingresos, Gastos Operativos (Admin, Capital Humano, Marketing, Operativos),"
                 "Taxes, Financial Outflows y Efectivo Cierre de Mes para los períodos **2025–2028**.\n\n"
                 "👉 [Abrir Cash Flow](https://cdp-cashflow-dashboard-vku9srv6ged2perto6duet.streamlit.app/)"
     },
