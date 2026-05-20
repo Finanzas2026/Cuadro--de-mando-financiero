@@ -9,7 +9,7 @@ KNOWLEDGE = [
         "resp": "📊 **Cash Flow Dashboard** monitorea el flujo de efectivo mensual de CD&P.\n\n"
                 "Incluye: Ingresos, Gastos Operativos (Admin, Capital Humano, Marketing, Operativos), "
                 "Taxes, Financial Outflows y Efectivo Cierre de Mes para los períodos **2025–2028**.\n\n"
-                "👉 [Abrir Cash Flow](https://cashflow-rnqmupyaqzpdva42uw6ywt.streamlit.app/)"
+                "👉 [Abrir Cash Flow](https://cdp-cashflow-dashboard-vku9srv6ged2perto6duet.streamlit.app/)"
     },
     {
         "keys": ["central link","closing","investment","capex","opex","irr","npv","roi","equity multiple","equity"],
@@ -25,7 +25,7 @@ KNOWLEDGE = [
                 "Compara **Ejecutado 2025 vs Presupuesto 2026, 2027 y 2028**.\n\n"
                 "Incluye: Ingresos, Utilidad Bruta, Gastos Operativos desglosados (Admin, Capital Humano, "
                 "Marketing, Operativos), EBITDA, Utilidad Operativa, Otros Ingresos/Egresos y Utilidad Neta.\n\n"
-                "👉 [Abrir Estado de Resultado](https://estado-de-resultado-j2xcmkofq7q7zwnqs9ycmu.streamlit.app/)"
+                "👉 [Abrir Estado de Resultado](https://estado-de-resultado-cfjy5j6mtcrqwrubn6jsb4.streamlit.app/)"
     },
     # Conceptos financieros
     {
