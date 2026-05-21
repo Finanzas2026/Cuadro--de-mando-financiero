@@ -167,8 +167,8 @@ def responder(pregunta):
         if any(k in q for k in item["keys"]):
             return item["resp"]
     return ("🤔 No tengo información específica sobre eso aún.\n\n"
-            "Puedo ayudarte con los **3 dashboards**, conceptos como **IRR, NPV, ROI, CAPEX, EBITDA** "
-            "o datos de **Central Link y Estado de Resultado**.\n\n"
+            "Puedo ayudarte con los **4 dashboards**, conceptos como **IRR, NPV, ROI, CAPEX, EBITDA** "
+            "o datos de **Central Link, Estado de Resultado y Portfolio Tax Impact**.\n\n"
             "Escribe **'ayuda'** para ver todo lo que sé.")
 
 st.set_page_config(page_title="Cuadro de Mando Financiero", layout="wide")
@@ -297,7 +297,7 @@ st.markdown("""
 
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "assistant", "content": "🙂 ¡Hola! Soy **Arturo Aguilar**, tu Analista Financiero.\n\nPuedo responderte sobre los 3 dashboards, conceptos como IRR, NPV, CAPEX, EBITDA y datos reales del proyecto.\n\nEscribe **'ayuda'** para ver todo lo que sé."}
+        {"role": "assistant", "content": "🙂 ¡Hola! Soy **Arturo Aguilar**, tu Analista Financiero.\n\nPuedo responderte sobre los 4 dashboards, conceptos como IRR, NPV, CAPEX, EBITDA y datos reales del proyecto.\n\nEscribe **'ayuda'** para ver todo lo que sé."}
     ]
 
 for msg in st.session_state.messages:
