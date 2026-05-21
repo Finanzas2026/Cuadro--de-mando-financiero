@@ -5,11 +5,11 @@ import re
 KNOWLEDGE = [
     # Dashboards
     {
-        "keys": ["cash flow","flujo","efectivo","cashflow"],
+        "keys": ["CDP","cash flow","flujo","efectivo","cashflow"],
         "resp": "📊 **Cash Flow Dashboard** monitorea el flujo de efectivo mensual de CD&P.\n\n"
-                "Incluye: Ingresos, Gastos Operativos (Admin, Capital Humano, Marketing, Operativos),"
+                "Incluye: Ingresos, Gastos Operativos (Admin, Capital Humano, Marketing, Operativos), "
                 "Taxes, Financial Outflows y Efectivo Cierre de Mes para los períodos **2025–2028**.\n\n"
-                "👉 [Abrir Cash Flow](https://cdp-cashflow-dashboard-vku9srv6ged2perto6duet.streamlit.app/)"
+                "👉 [Abrir Cash Flow](https://cashflow-rnqmupyaqzpdva42uw6ywt.streamlit.app/)"
     },
     {
         "keys": ["central link","closing","investment","capex","opex","irr","npv","roi","equity multiple","equity"],
@@ -25,7 +25,7 @@ KNOWLEDGE = [
                 "Compara **Ejecutado 2025 vs Presupuesto 2026, 2027 y 2028**.\n\n"
                 "Incluye: Ingresos, Utilidad Bruta, Gastos Operativos desglosados (Admin, Capital Humano, "
                 "Marketing, Operativos), EBITDA, Utilidad Operativa, Otros Ingresos/Egresos y Utilidad Neta.\n\n"
-                "👉 [Abrir Estado de Resultado](https://estado-de-resultado-cfjy5j6mtcrqwrubn6jsb4.streamlit.app/)"
+                "👉 [Abrir Estado de Resultado](https://estado-de-resultado-j2xcmkofq7q7zwnqs9ycmu.streamlit.app/)"
     },
     # Conceptos financieros
     {
@@ -125,10 +125,18 @@ KNOWLEDGE = [
                 "Panamá cuenta con más de 60 bancos con licencia general supervisados por la SBP."
     },
     {
+        "keys": ["portfolio tax","tax impact","impuesto","taxes portfolio","impacto fiscal","tax drag","after tax","pre tax","post tax","fiscal","portafolio tax"],
+        "resp": "💼 **Portfolio Tax Impact Dashboard**\n\n"
+                "Analiza el impacto fiscal en el portafolio de inversiones de CD&P.\n\n"
+                "Incluye: Retornos pre-tax vs post-tax, Tax Drag, eficiencia fiscal por activo "
+                "y análisis del impacto de los impuestos sobre el rendimiento del portafolio.\n\n"
+                "👉 [Abrir Portfolio Tax Impact](https://portfolio-tax-impact-dashboard-ft42lnmxwcmtox5najx6xg.streamlit.app/)"
+    },
+    {
         "keys": ["hola","hello","hi","buenos","buenas","que tal","como estas"],
         "resp": "🙂 ¡Hola! Soy **Arturo Aguilar**, tu Analista Financiero del **Cuadro de Mando CD&P**.\n\n"
                 "Puedo ayudarte con:\n"
-                "- 📊 Información sobre los 3 dashboards\n"
+                "- 📊 Información sobre los 4 dashboards\n"
                 "- 📐 Conceptos financieros (IRR, NPV, ROI, CAPEX, EBITDA...)\n"
                 "- 💰 Datos clave de los proyectos\n\n"
                 "¿Qué deseas consultar?"
@@ -139,7 +147,8 @@ KNOWLEDGE = [
                 "**Dashboards:**\n"
                 "- Cash Flow Dashboard\n"
                 "- Closing Project Assumptions (Central Link)\n"
-                "- Estado de Resultado\n\n"
+                "- Estado de Resultado\n"
+                "- Portfolio Tax Impact\n\n"
                 "**Conceptos financieros:**\n"
                 "- IRR, NPV, ROI, Equity Multiple\n"
                 "- CAPEX, OPEX, EBITDA\n"
@@ -227,7 +236,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ── CARDS ──────────────────────────────────────────────────────────────────────
-c1, c2, c3 = st.columns(3)
+c1, c2, c3, c4 = st.columns(4)
 
 with c1:
     st.markdown("""
@@ -237,7 +246,7 @@ with c1:
             <div class="app-title">Cash Flow Dashboard</div>
             <div class="app-desc">Monitoreo del flujo de efectivo mensual por período.<br>Ingresos, Gastos Operativos, Taxes y Cierre de Mes 2025–2028.</div>
         </div>
-        <a class="app-btn" href="https://cdp-cashflow-dashboard-vku9srv6ged2perto6duet.streamlit.app/" target="_blank">Abrir →</a>
+        <a class="app-btn" href="https://cashflow-rnqmupyaqzpdva42uw6ywt.streamlit.app/" target="_blank">Abrir →</a>
     </div>
     """, unsafe_allow_html=True)
 
@@ -261,7 +270,19 @@ with c3:
             <div class="app-title">Estado de Resultado</div>
             <div class="app-desc">P&L Presupuesto 2026–2028 vs Ejecutado 2025.<br>Ingresos, Gastos Operativos, EBITDA y Utilidad Neta.</div>
         </div>
-        <a class="app-btn" href="https://estado-de-resultado-cfjy5j6mtcrqwrubn6jsb4.streamlit.app/" target="_blank">Abrir →</a>
+        <a class="app-btn" href="https://estado-de-resultado-j2xcmkofq7q7zwnqs9ycmu.streamlit.app/" target="_blank">Abrir →</a>
+    </div>
+    """, unsafe_allow_html=True)
+
+with c4:
+    st.markdown("""
+    <div class="app-card">
+        <div>
+            <div class="app-icon">💼</div>
+            <div class="app-title">Portfolio Tax Impact</div>
+            <div class="app-desc">Impacto fiscal en el portafolio de inversiones.<br>Retornos pre-tax vs post-tax, Tax Drag y eficiencia fiscal por activo.</div>
+        </div>
+        <a class="app-btn" href="https://portfolio-tax-impact-dashboard-ft42lnmxwcmtox5najx6xg.streamlit.app/" target="_blank">Abrir →</a>
     </div>
     """, unsafe_allow_html=True)
 
